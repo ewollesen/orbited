@@ -11,7 +11,7 @@ class Orbited
     port = OrbitedConfig.stomp_port 
     reliable = false
     s = Stomp::Client.new(user, password, host, port, reliable)
-    s.send("/topic/#{channel}", data, headers)
+    s.publish("/topic/#{channel}", data, headers)
     s.close
   rescue Errno::ECONNREFUSED
     RAILS_DEFAULT_LOGGER.error "!!! The Orbited server appears to be down!"
