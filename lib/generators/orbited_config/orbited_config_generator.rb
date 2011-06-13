@@ -13,7 +13,7 @@ class OrbitedConfigGenerator < Rails::Generators::Base
   def create_orbited_config
      
     # Load config from config/orbited.yml
-    @config = YAML.load_file(File.join(RAILS_ROOT, 'config', 'orbited.yml'))[env]
+    @config = YAML.load_file(File.join(Rails.root.to_s, 'config', 'orbited.yml'))[env]
     @config.symbolize_keys!
     
     # Defaults
